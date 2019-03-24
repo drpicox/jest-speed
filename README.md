@@ -16,6 +16,8 @@ $ sw_vers
 ProductName:    Mac OS X
 ProductVersion:    10.14.3
 BuildVersion:    18D109
+$ node --version
+v10.15.1
 ```
 
 At https://github.com/drpicox/jest-speed I provide a small example of the speed of jest. 
@@ -49,3 +51,5 @@ Time:        3.448s
 Javascript code, specs and src are generated with `gen.sh`.
 Feel free to modify it and check other code structures.
 The total number of files under src is 730.
+
+My impressions: I had the impression that it is the cache system of compiled files that add a significant overhead. It looked like there is some contention when multiple workers are trying to compile the same file. However, I was wrong, by tweaking the `gen.sh` I made each test completely independent, there are no shared files but execution times are similar (this change is not present in the repository).
